@@ -120,7 +120,7 @@
 - 在控制销毁,或者控制器将要消失的时候,示例如下
 
     ```objc
-- (void)dealloc{
+   - (void)dealloc{
     
     // 写入美颜参数
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
@@ -138,7 +138,7 @@
     
     [[FUManager shareManager] destoryItems];
     NSLog(@"----界面销毁");
-}
+   }
     ```
 - 读取数据时有两个地方需要注意,一个是`FUAPIDemoBar.m` 工具条数据初始化,一个是`FUManager.m`SDK业务管理类中 `loadFilter`方法中,美颜数据的加载
 - FUAPIDemoBar.m 中 对数据的处理有
