@@ -181,19 +181,19 @@
  
     ```objc
     
-    // 滑条滑动
-- (IBAction)filterSliderValueChange:(FUSlider *)sender {
-    _seletedParam.mValue = sender.value;
+      // 滑条滑动
+      - (IBAction)filterSliderValueChange:(FUSlider *)sender {
+         _seletedParam.mValue = sender.value;
     
-    if (_seletedParam.type == FUDataTypeBeautify || _seletedParam.type == FUDataTypeFilter) { // 美颜参数改变
+         if (_seletedParam.type == FUDataTypeBeautify || _seletedParam.type == FUDataTypeFilter) { // 美颜参数改变
 
-        [self.beautifyValueDict setValue:@(_seletedParam.mValue) forKey:_seletedParam.mParam];
-    }
+            [self.beautifyValueDict setValue:@(_seletedParam.mValue) forKey:_seletedParam.mParam];
+         }
     
-    if (_mDelegate && [_mDelegate respondsToSelector:@selector(filterValueChange:)]) {
-        [_mDelegate filterValueChange:_seletedParam];
-    }
-}
+         if (_mDelegate && [_mDelegate respondsToSelector:@selector(filterValueChange:)]) {
+            [ _mDelegate filterValueChange:_seletedParam];
+         }
+      }
     ```
 - FUManager.m 中对数据的处理,详见 `loadFilter` 方法的调用
 
@@ -203,17 +203,18 @@
     
         ```objc
         
-     -(void)filterValueChange:(FUBeautyParam *)param{
-    [[FUManager shareManager] filterValueChange:param];
+         -(void)filterValueChange:(FUBeautyParam *)param{
+         [[FUManager shareManager] filterValueChange:param];
     
-        if (param.type == FUDataTypeFilter) { // 美颜滤镜
+         if (param.type == FUDataTypeFilter) { // 美颜滤镜
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"seletedFliter"];
-        [[NSUserDefaults standardUserDefaults] setObject:param.mParam forKey:@"seletedFliter"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+         [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"seletedFliter"];
+         [[NSUserDefaults standardUserDefaults] setObject:param.mParam forKey:@"seletedFliter"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+            
             }
     
-        }
+         }
         
         ```
         
